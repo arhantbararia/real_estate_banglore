@@ -4,13 +4,13 @@
 
 ### Understanding the Table Schema:
 
-![Untitled](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled.png)
+![Untitled](https://user-images.githubusercontent.com/61796574/182838206-faf2f1d5-24dc-40b9-806a-bc12cb605ed9.png)
 
 ### Cleaning data
 
 For the sake of simplicity we drop the columns like: area_type ,society , availability
 
-![Untitled](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%201.png)
+![Untitled 1](https://user-images.githubusercontent.com/61796574/182838255-e79fda90-eddc-4d98-aba0-91abaea605ae.png)
 
 1. Then drop the null values.
 2. Clean the size (as everything is in BHK) 
@@ -47,7 +47,7 @@ df5.location = df5.location.apply(lambda x: x.strip())
 df6 = df5[~(df5.total_sqft / df5.bhk < 30)]
 ```
 
-![Untitled](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%202.png)
+![Untitled 2](https://user-images.githubusercontent.com/61796574/182838370-55d483b4-fd8c-40ab-8bf6-610ba7d5b038.png)
 
 1. Removing outliers
 
@@ -108,16 +108,16 @@ def plot_scatter_chart(df , location):
 plot_scatter_chart(df7 , "Rajaji Nagar")
 ```
 
-![Untitled](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%203.png)
+![Untitled 3](https://user-images.githubusercontent.com/61796574/182838540-8830ec32-8e35-43a1-9b11-03ff455c9307.png)
 
 We can clearly see there are some flats in Rajaji nagar with 2 BHK, which are expansive than 3 BHK.
 Also, since we dropped the society column which is clearly affecting the results here.
 
 ## Preparing data for feeding to models.
 
-M**aking dumies for location data as regression model can't work on strings**
+Making dumies for location data as regression model can't work on strings
 
-![Untitled](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%204.png)
+![Untitled 4](https://user-images.githubusercontent.com/61796574/182838576-c746076e-d161-4520-a61d-4e4238a21be7.png)
 
 ```python
 
@@ -151,7 +151,7 @@ cv = ShuffleSplit(n_splits = 5 , test_size =0.2 , random_state = 0)
 cross_val_score(LinearRegression(), X , Y , cv = cv)
 ```
 
-![Output](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%205.png)
+![Untitled 5](https://user-images.githubusercontent.com/61796574/182838641-6fcad39c-5cf4-4a72-9e1e-235c1a1d7402.png)
 
 Output
 
@@ -205,7 +205,7 @@ def find_best_model_using_gridsearchCV(X , Y):
 find_best_model_using_gridsearchCV(X,Y)
 ```
 
-![Output](Real%20Estate%20Price%20Predictor%20281b3d6e7c3c46b3bf04427a4a43b170/Untitled%206.png)
+![Untitled 6](https://user-images.githubusercontent.com/61796574/182838755-037867f6-ff7c-4072-8b21-bfc41a78385b.png)
 
 Output
 
